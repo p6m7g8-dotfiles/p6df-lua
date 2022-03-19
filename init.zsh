@@ -7,7 +7,7 @@
 ######################################################################
 p6df::modules::lua::deps() {
   ModuleDeps=(
-    p6m7g8/p6common
+    p6m7g8-dotfiles/p6common
     cehoffman/luaenv
     cehoffman/lua-build
     xpol/luaenv-luarocks
