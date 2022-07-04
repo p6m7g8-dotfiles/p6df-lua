@@ -19,11 +19,28 @@ p6df::modules::lua::deps() {
 #
 # Function: p6df::modules::lua::init()
 #
+#  Environment:	 P6_DFZ_SRC_DIR
 #>
 ######################################################################
 p6df::modules::lua::init() {
 
   p6df::modules::lua::luaenv::init "$P6_DFZ_SRC_DIR"
+
+  p6df::modules::lua::prompt::init
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::lua::prompt::init()
+#
+#>
+######################################################################
+p6df::modules::lua::prompt::init() {
+
+  p6df::core::prompt::line::add "p6_lang_prompt_info"
+  p6df::core::prompt::line::add "p6_lang_envs_prompt_info"
+  p6df::core::prompt::lang::line::add lua
 }
 
 ######################################################################
@@ -34,6 +51,7 @@ p6df::modules::lua::init() {
 #  Args:
 #	dir -
 #
+#  Environment:	 DISABLE_ENVS HAS_LUAENV LUAENV_ROOT
 #>
 ######################################################################
 p6df::modules::lua::luaenv::init() {
@@ -55,24 +73,17 @@ p6df::modules::lua::luaenv::init() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::lua::prompt::line()
+# Function: str str = p6_lua_env_prompt_info()
 #
+#  Returns:
+#	str - str
+#
+#  Environment:	 LUAENV_ROOT
 #>
 ######################################################################
-p6df::modules::lua::prompt::line() {
+p6_lua_env_prompt_info() {
 
-  p6_lua_prompt_info
-}
+  local str="lua_root=$LUAENV_ROOT"
 
-######################################################################
-#<
-#
-# Function: p6_lua_prompt_info()
-#
-#>
-######################################################################
-p6_lua_prompt_info() {
-
-  echo -n "lua:\t  "
-  p6_lang_version "lua"
+  p6_return_str "$str"
 }

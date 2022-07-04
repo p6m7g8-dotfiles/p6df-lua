@@ -44,12 +44,11 @@
 
 #### p6df-lua/init.zsh:
 
-- p6_lua_prompt_info()
 - p6df::modules::lua::deps()
-- p6df::modules::lua::external::brew()
 - p6df::modules::lua::init()
 - p6df::modules::lua::luaenv::init(dir)
-- p6df::modules::lua::prompt::line()
+- p6df::modules::lua::prompt::init()
+- str str = p6_lua_env_prompt_info()
 
 
 
