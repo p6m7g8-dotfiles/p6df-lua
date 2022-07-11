@@ -65,7 +65,7 @@ p6df::modules::lua::luaenv::init() {
     export LUAENV_ROOT
     export HAS_LUAENV=1
 
-    p6df::util::path_if $LUAENV_ROOT/bin
+    p6_path_if $LUAENV_ROOT/bin
     eval "$(p6_run_code luaenv init - zsh)"
   fi
 }
