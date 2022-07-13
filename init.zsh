@@ -83,7 +83,7 @@ p6df::modules::lua::luaenv::init() {
 ######################################################################
 p6_lua_env_prompt_info() {
 
-  local str="lua_root=$LUAENV_ROOT"
+  local str="lua_root:\t  $LUAENV_ROOT"
 
   p6_return_str "$str"
 }
