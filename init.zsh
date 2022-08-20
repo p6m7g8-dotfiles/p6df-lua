@@ -25,9 +25,7 @@ p6df::modules::lua::deps() {
 ######################################################################
 p6df::modules::lua::init() {
 
-  p6df::modules::lua::luaenv::init "$P6_DFZ_SRC_DIR"
-
-  p6df::modules::lua::prompt::init
+  p6df::core::lang::mgr::init "$P6_DFZ_SRC_DIR/cehoffman/luaenv" "lua"
 
   p6_return_void
 }
@@ -35,25 +33,16 @@ p6df::modules::lua::init() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::lua::luaenv::init(dir)
+# Function: p6df::modules::lua::home::symlink()
 #
-#  Args:
-#	dir -
-#
-#  Environment:	 HAS_LUAENV LUAENV_ROOT P6_DFZ_LANGS_DISABLE
+#  Environment:	 P6_SRC_DIR
 #>
 ######################################################################
-p6df::modules::lua::luaenv::init() {
-  local dir="$1"
+p6df::modules::lua::home::symlink() {
 
-  local LUAENV_ROOT=$dir/cehoffman/luaenv
-  if p6_string_blank "$P6_DFZ_LANGS_DISABLE" && p6_file_executable "$LUAENV_ROOT/bin/luaenv"; then
-    p6_env_export LUAENV_ROOT "$LUAENV_ROOT"
-    p6_env_export HAS_LUAENV 1
-
-    p6_path_if $LUAENV_ROOT/bin
-    eval "$(luaenv init - zsh)"
-  fi
+  p6_dir_mk "$P6_SRC_DIR/cehoffman/luaenv/plungins"
+  p6_file_symlink "$P6_SRC_DIR/cehoffman/luaenv/plungins/lua-build" "$P6_DFZ_SRC_DIR/cehoffman/lua-build"
+  p6_file_symlink "$P6_SRC_DIR/cehoffman/luaenv/plungins/luaenv-luarocks" "$P6_DFZ_SRC_DIR/xpol/luaenv-luarocks"
 
   p6_return_void
 }
@@ -61,21 +50,54 @@ p6df::modules::lua::luaenv::init() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::lua::prompt::init()
+# Function: p6df::modules::lua::langs()
 #
 #>
 ######################################################################
-p6df::modules::lua::prompt::init() {
+p6df::modules::lua::langs() {
 
-  p6df::core::prompt::line::add "p6_lang_prompt_info"
-  p6df::core::prompt::line::add "p6_lang_envs_prompt_info"
-  p6df::core::prompt::lang::line::add lua
+  # nuke the old one
+  local previous=$(p6df::modules::lua::luaenv::latest::installed)
+  luaenv uninstall -f $previous
+
+  # get the shiny one
+  local latest=$(p6df::modules::lua::luaenv::latest)
+  nodenv install -s $latest
+
+  nodenv global $latest
+  nodenv rehash
+
+  p6_return_void
 }
 
 ######################################################################
 #<
 #
-# Function: str str = p6_lua_env_prompt_info()
+# Function: p6df::modules::lua::luaenv::latest()
+#
+#>
+######################################################################
+p6df::modules::lua::luaenv::latest() {
+
+  luaenv install -l | p6_filter_select "5" | p6_filter_exclude jit | p6_filter_last "1" | p6_filter_spaces_strip
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::lua::luaenv::latest()
+#
+#>
+######################################################################
+p6df::modules::lua::luaenv::latest() {
+
+  luaenv install -l | p6_filter_select "5" | p6_filter_exclude jit | p6_filter_from_end "2" | p6_filter_spaces_strip
+}
+
+######################################################################
+#<
+#
+# Function: str str = p6df::modules::lua::env::prompt::info()
 #
 #  Returns:
 #	str - str
@@ -83,7 +105,7 @@ p6df::modules::lua::prompt::init() {
 #  Environment:	 LUAENV_ROOT
 #>
 ######################################################################
-p6_lua_env_prompt_info() {
+p6df::modules::lua::env::prompt::info() {
 
   local str="lua_root:\t  $LUAENV_ROOT"
 

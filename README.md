@@ -45,10 +45,12 @@
 #### p6df-lua/init.zsh:
 
 - p6df::modules::lua::deps()
+- p6df::modules::lua::home::symlink()
 - p6df::modules::lua::init()
-- p6df::modules::lua::luaenv::init(dir)
-- p6df::modules::lua::prompt::init()
-- str str = p6_lua_env_prompt_info()
+- p6df::modules::lua::langs()
+- p6df::modules::lua::luaenv::latest()
+- p6df::modules::lua::luaenv::latest()
+- str str = p6df::modules::lua::env::prompt::info()
 
 
 
