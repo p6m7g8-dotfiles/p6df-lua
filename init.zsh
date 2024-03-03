@@ -85,7 +85,7 @@ p6df::modules::lua::luaenv::latest() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::lua::luaenv::latest()
+# Function: p6df::modules::lua::luaenv::latest::installed()
 #
 #>
 ######################################################################

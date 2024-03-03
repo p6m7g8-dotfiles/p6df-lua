@@ -49,7 +49,7 @@
 - p6df::modules::lua::init()
 - p6df::modules::lua::langs()
 - p6df::modules::lua::luaenv::latest()
-- p6df::modules::lua::luaenv::latest()
+- p6df::modules::lua::luaenv::latest::installed()
 - str str = p6df::modules::lua::env::prompt::info()
 
 
