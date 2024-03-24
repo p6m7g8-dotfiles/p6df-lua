@@ -10,8 +10,7 @@
   - [Summary](#summary)
   - [Contributing](#contributing)
   - [Code of Conduct](#code-of-conduct)
-  - [Changes](#changes)
-    - [Usage](#usage)
+  - [Usage](#usage)
   - [Author](#author)
 
 ### Badges
@@ -34,11 +33,13 @@
 
 - [Code of Conduct](https://github.com/p6m7g8/.github/blob/master/CODE_OF_CONDUCT.md)
 
-## Changes
-
-- [Change Log](CHANGELOG.md)
-
 ## Usage
+
+
+### Aliases
+
+
+### Functions
 
 ### p6df-lua:
 
@@ -46,14 +47,27 @@
 
 - p6df::modules::lua::deps()
 - p6df::modules::lua::home::symlink()
-- p6df::modules::lua::init()
+- p6df::modules::lua::init(_module, dir)
 - p6df::modules::lua::langs()
-- p6df::modules::lua::luaenv::latest()
-- p6df::modules::lua::luaenv::latest::installed()
 - str str = p6df::modules::lua::env::prompt::info()
 
 
+### p6df-lua/lib:
 
+#### p6df-lua/lib/luaenv.sh:
+
+- p6df::modules::lua::luaenv::latest()
+- p6df::modules::lua::luaenv::latest::installed()
+
+
+
+## Hier
+```text
+.
+└── luaenv.sh
+
+1 directory, 1 file
+```
 ## Author
 
 Philip M . Gollucci <pgollucci@p6m7g8.com>

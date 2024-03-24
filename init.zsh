@@ -18,12 +18,20 @@ p6df::modules::lua::deps() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::lua::init()
+# Function: p6df::modules::lua::init(_module, dir)
+#
+#  Args:
+#	_module -
+#	dir -
 #
 #  Environment:	 P6_DFZ_SRC_DIR
 #>
 ######################################################################
 p6df::modules::lua::init() {
+  local _module="$1"
+  local dir="$2"
+
+  p6_bootstrap "$dir"
 
   p6df::core::lang::mgr::init "$P6_DFZ_SRC_DIR/cehoffman/luaenv" "lua"
 
@@ -68,30 +76,6 @@ p6df::modules::lua::langs() {
   luaenv rehash
 
   p6_return_void
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::lua::luaenv::latest()
-#
-#>
-######################################################################
-p6df::modules::lua::luaenv::latest() {
-
-  luaenv install -l | p6_filter_select "5" | p6_filter_exclude jit | p6_filter_last "1" | p6_filter_spaces_strip
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::lua::luaenv::latest::installed()
-#
-#>
-######################################################################
-p6df::modules::lua::luaenv::latest::installed() {
-
-  luaenv install -l | p6_filter_select "5" | p6_filter_exclude jit | p6_filter_from_end "2" | p6_filter_spaces_strip
 }
 
 ######################################################################
