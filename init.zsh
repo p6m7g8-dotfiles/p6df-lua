@@ -43,7 +43,7 @@ p6df::modules::lua::init() {
 #
 # Function: p6df::modules::lua::home::symlink()
 #
-#  Environment:	 P6_SRC_DIR
+#  Environment:	 P6_DFZ_SRC_DIR P6_SRC_DIR
 #>
 ######################################################################
 p6df::modules::lua::home::symlink() {
@@ -99,7 +99,10 @@ p6df::modules::lua::prompt::env() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::lua::prompt::lang()
+# Function: str str = p6df::modules::lua::prompt::lang()
+#
+#  Returns:
+#	str - str
 #
 #>
 ######################################################################
