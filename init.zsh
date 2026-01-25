@@ -112,7 +112,7 @@ p6df::modules::lua::prompt::lang() {
   str=$(p6df::core::lang::prompt::lang \
     "lua" \
     "luaenv version-name 2>/dev/null" \
-    "lua -v | awk '{print $2}'")
+    "lua -v | p6_filter_column_pluck 2")
 
   p6_return_str "$str"
 }
