@@ -38,6 +38,9 @@ TODO: Add a short summary of this module.
 - `p6df::modules::lua::deps()`
 - `p6df::modules::lua::home::symlink()`
 - `p6df::modules::lua::init(_module, dir)`
+  - Args:
+    - _module - 
+    - dir - 
 - `p6df::modules::lua::langs()`
 - `str str = p6df::modules::lua::prompt::env()`
 - `str str = p6df::modules::lua::prompt::lang()`
