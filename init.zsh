@@ -41,12 +41,12 @@ p6df::modules::lua::init() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::lua::home::symlink()
+# Function: p6df::modules::lua::home::symlinks()
 #
 #  Environment:	 P6_DFZ_SRC_DIR P6_SRC_DIR
 #>
 ######################################################################
-p6df::modules::lua::home::symlink() {
+p6df::modules::lua::home::symlinks() {
 
   p6_dir_mk "$P6_SRC_DIR/cehoffman/luaenv/plungins"
   p6_file_symlink "$P6_SRC_DIR/cehoffman/luaenv/plungins/lua-build" "$P6_DFZ_SRC_DIR/cehoffman/lua-build"
