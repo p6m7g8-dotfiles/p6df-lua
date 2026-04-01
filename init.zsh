@@ -18,20 +18,12 @@ p6df::modules::lua::deps() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::lua::init(_module, dir)
-#
-#  Args:
-#	_module -
-#	dir -
+# Function: p6df::modules::lua::langmgr::init()
 #
 #  Environment:	 P6_DFZ_SRC_DIR
 #>
 ######################################################################
-p6df::modules::lua::init() {
-  local _module="$1"
-  local dir="$2"
-
-  p6_bootstrap "$dir"
+p6df::modules::lua::langmgr::init() {
 
   p6df::core::lang::mgr::init "$P6_DFZ_SRC_DIR/cehoffman/luaenv" "lua"
 
@@ -81,24 +73,6 @@ p6df::modules::lua::langs() {
 ######################################################################
 #<
 #
-# Function: str str = p6df::modules::lua::prompt::env()
-#
-#  Returns:
-#	str - str
-#
-#>
-######################################################################
-p6df::modules::lua::prompt::env() {
-
-#  local str="lua_root:\t  $LUAENV_ROOT"
-  local str=""
-
-  p6_return_str "$str"
-}
-
-######################################################################
-#<
-#
 # Function: str str = p6df::modules::lua::prompt::lang()
 #
 #  Returns:
@@ -115,4 +89,20 @@ p6df::modules::lua::prompt::lang() {
     "lua -v | p6_filter_column_pluck 2")
 
   p6_return_str "$str"
+}
+
+######################################################################
+#<
+#
+# Function: words lua $LUAENV_ROOT = p6df::modules::lua::prompt::env()
+#
+#  Returns:
+#	words - lua $LUAENV_ROOT
+#
+#  Environment:	 LUAENV_ROOT
+#>
+######################################################################
+p6df::modules::lua::prompt::env() {
+
+  p6_return_words 'lua' "$"
 }
