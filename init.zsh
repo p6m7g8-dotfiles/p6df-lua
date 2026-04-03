@@ -40,9 +40,9 @@ p6df::modules::lua::langmgr::init() {
 ######################################################################
 p6df::modules::lua::home::symlinks() {
 
-  p6_dir_mk "$P6_SRC_DIR/cehoffman/luaenv/plungins"
-  p6_file_symlink "$P6_SRC_DIR/cehoffman/luaenv/plungins/lua-build" "$P6_DFZ_SRC_DIR/cehoffman/lua-build"
-  p6_file_symlink "$P6_SRC_DIR/cehoffman/luaenv/plungins/luaenv-luarocks" "$P6_DFZ_SRC_DIR/xpol/luaenv-luarocks"
+  p6_dir_mk "$P6_SRC_DIR/cehoffman/luaenv/plugins"
+  p6_file_symlink "$P6_SRC_DIR/cehoffman/luaenv/plugins/lua-build" "$P6_DFZ_SRC_DIR/cehoffman/lua-build"
+  p6_file_symlink "$P6_SRC_DIR/cehoffman/luaenv/plugins/luaenv-luarocks" "$P6_DFZ_SRC_DIR/xpol/luaenv-luarocks"
 
   p6_return_void
 }
@@ -104,5 +104,5 @@ p6df::modules::lua::prompt::lang() {
 ######################################################################
 p6df::modules::lua::prompt::env() {
 
-  p6_return_words 'lua' "$"
+  p6_return_words 'lua' '$LUAENV_ROOT'
 }
