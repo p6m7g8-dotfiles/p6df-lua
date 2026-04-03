@@ -104,5 +104,5 @@ p6df::modules::lua::prompt::lang() {
 ######################################################################
 p6df::modules::lua::prompt::env() {
 
-  p6_return_words 'lua' '$LUAENV_ROOT'
+  p6_return_words 'lua' "$LUAENV_ROOT"
 }
