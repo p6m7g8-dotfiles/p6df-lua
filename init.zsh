@@ -94,10 +94,10 @@ p6df::modules::lua::prompt::lang() {
 ######################################################################
 #<
 #
-# Function: words lua $LUAENV_ROOT = p6df::modules::lua::prompt::env()
+# Function: words lua = p6df::modules::lua::prompt::env()
 #
 #  Returns:
-#	words - lua $LUAENV_ROOT
+#	words - lua
 #
 #  Environment:	 LUAENV_ROOT
 #>
